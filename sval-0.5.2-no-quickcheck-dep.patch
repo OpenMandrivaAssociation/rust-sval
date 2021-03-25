@@ -1,19 +1,25 @@
-diff -up sval-0.5.2/Cargo.toml.omv~ sval-0.5.2/Cargo.toml
---- sval-0.5.2/Cargo.toml.omv~	2021-03-25 17:21:04.258250715 +0100
-+++ sval-0.5.2/Cargo.toml	2021-03-25 17:21:19.723349685 +0100
-@@ -41,8 +41,6 @@ default-features = false
+diff -up sval-1.0.0-alpha.5/Cargo.toml.1~ sval-1.0.0-alpha.5/Cargo.toml
+--- sval-1.0.0-alpha.5/Cargo.toml.1~	2021-01-27 03:13:15.000000000 +0100
++++ sval-1.0.0-alpha.5/Cargo.toml	2021-03-25 23:14:56.588646545 +0100
+@@ -41,14 +41,6 @@ default-features = false
  [dependencies.sval_derive]
- version = "0.5.2"
+ version = "1.0.0-alpha.5"
  optional = true
 -[dev-dependencies.quickcheck]
 -version = "0.9"
+-
+-[dev-dependencies.wasm-bindgen]
+-version = "0.2"
+-
+-[dev-dependencies.wasm-bindgen-test]
+-version = "0.3"
  
  [features]
  alloc = []
-diff -up sval-0.5.2/src/stream/stack.rs.omv~ sval-0.5.2/src/stream/stack.rs
---- sval-0.5.2/src/stream/stack.rs.omv~	2021-03-25 17:21:29.877414552 +0100
-+++ sval-0.5.2/src/stream/stack.rs	2021-03-25 17:21:55.825579913 +0100
-@@ -747,12 +747,6 @@ mod tests {
+diff -up sval-1.0.0-alpha.5/src/stream/stack.rs.1~ sval-1.0.0-alpha.5/src/stream/stack.rs
+--- sval-1.0.0-alpha.5/src/stream/stack.rs.1~	2021-01-26 02:22:54.000000000 +0100
++++ sval-1.0.0-alpha.5/src/stream/stack.rs	2021-03-25 23:14:41.341567978 +0100
+@@ -745,12 +745,6 @@ mod tests {
  
          use crate::std::vec::Vec;
  
@@ -26,7 +32,7 @@ diff -up sval-0.5.2/src/stream/stack.rs.omv~ sval-0.5.2/src/stream/stack.rs
          // FIXME: This test isn't very clever about how a
          // sequence of commands is generated. It's more likely
          // to come up with a set that fails early than one
-@@ -789,47 +783,6 @@ mod tests {
+@@ -787,47 +781,6 @@ mod tests {
                  }
              }
          }
