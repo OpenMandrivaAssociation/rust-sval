@@ -1,0 +1,76 @@
+diff -up sval-0.5.2/Cargo.toml.omv~ sval-0.5.2/Cargo.toml
+--- sval-0.5.2/Cargo.toml.omv~	2021-03-25 17:21:04.258250715 +0100
++++ sval-0.5.2/Cargo.toml	2021-03-25 17:21:19.723349685 +0100
+@@ -41,8 +41,6 @@ default-features = false
+ [dependencies.sval_derive]
+ version = "0.5.2"
+ optional = true
+-[dev-dependencies.quickcheck]
+-version = "0.9"
+ 
+ [features]
+ alloc = []
+diff -up sval-0.5.2/src/stream/stack.rs.omv~ sval-0.5.2/src/stream/stack.rs
+--- sval-0.5.2/src/stream/stack.rs.omv~	2021-03-25 17:21:29.877414552 +0100
++++ sval-0.5.2/src/stream/stack.rs	2021-03-25 17:21:55.825579913 +0100
+@@ -747,12 +747,6 @@ mod tests {
+ 
+         use crate::std::vec::Vec;
+ 
+-        use quickcheck::{
+-            quickcheck,
+-            Arbitrary,
+-            Gen,
+-        };
+-
+         // FIXME: This test isn't very clever about how a
+         // sequence of commands is generated. It's more likely
+         // to come up with a set that fails early than one
+@@ -789,47 +783,6 @@ mod tests {
+                 }
+             }
+         }
+-
+-        quickcheck! {
+-            fn stack_does_not_panic(cmd: Vec<Command>) -> bool {
+-                let mut stack = Stack::new();
+-
+-                for cmd in cmd {
+-                    match cmd {
+-                        Command::Primitive => {
+-                            let _ = stack.primitive();
+-                        },
+-                        Command::MapBegin => {
+-                            let _ = stack.map_begin();
+-                        },
+-                        Command::MapKey => {
+-                            let _ = stack.map_key();
+-                        },
+-                        Command::MapValue => {
+-                            let _ = stack.map_value();
+-                        },
+-                        Command::MapEnd => {
+-                            let _ = stack.map_end();
+-                        },
+-                        Command::SeqBegin => {
+-                            let _ = stack.seq_begin();
+-                        },
+-                        Command::SeqElem => {
+-                            let _ = stack.seq_elem();
+-                        },
+-                        Command::SeqEnd => {
+-                            let _ = stack.seq_end();
+-                        },
+-                        Command::End => {
+-                            let _ = stack.end();
+-                        },
+-                    }
+-                }
+-
+-                // So long as the stack doesn't panic we're happy
+-                true
+-            }
+-        }
+     }
+ 
+     #[cfg(feature = "arbitrary-depth")]
