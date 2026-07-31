@@ -5,7 +5,7 @@
 %global crate sval
 
 Name:           rust-%{crate}
-Version:        1.0.0~alpha.5
+Version:        2.21.0
 Release:        1%{?dist}
 Summary:        No-std, object-safe serialization framework
 
